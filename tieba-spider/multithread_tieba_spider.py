@@ -6,9 +6,11 @@ import requests
 import json
 import sys
 import time
+import io
+import urllib.request
+import importlib
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+importlib.reload(sys)
 
 def save_info(dict_content):
     f.writelines(u'回帖人：' + str(dict_content['user_name']) + '\n')
@@ -34,7 +36,7 @@ def tieba_spider(url):
 
 if __name__ == '__main__':
 
-    print u'开始抓取...'
+    print (u'开始抓取...')
     time1 = time.time()
     f = open('result.txt', 'w')
     pool = ThreadPool(4)
@@ -47,5 +49,5 @@ if __name__ == '__main__':
     pool.join()
     f.close()
     time2 = time.time()
-    print u'抓取完毕...'
-    print u'用时： ' + str(time2-time1) + 's'
+    print (u'抓取完毕...')
+    print (u'用时： ' + str(time2-time1) + 's')
